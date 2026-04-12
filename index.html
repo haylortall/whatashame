@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>what a shame</title>
+
+<meta property="og:title" content="what a shame">
+<meta property="og:description" content="click for a measured response">
+<meta property="og:image" content="preview.png">
+<meta property="og:type" content="website">
+
+<style>
+body{
+  margin:0;
+  background:#f2f2f2;
+  color:#111;
+  font-family:-apple-system, BlinkMacSystemFont, "Helvetica Neue", Arial, sans-serif;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  height:100vh;
+  text-align:center;
+  cursor:pointer;
+}
+
+.container{
+  max-width:560px;
+  padding:24px;
+}
+
+h1{
+  font-weight:500;
+  font-size:.9rem;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+  margin-bottom:28px;
+  opacity:.5;
+}
+
+#text{
+  font-size:1.8rem;
+  line-height:1.35;
+  min-height:3.4rem;
+}
+
+.footer{
+  position:fixed;
+  bottom:18px;
+  left:50%;
+  transform:translateX(-50%);
+  font-size:.8rem;
+  opacity:.4;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+  <h1>what a shame</h1>
+  <div id="text">click</div>
+</div>
+
+<div class="footer">taylor</div>
+
+<script>
+const baseLines = [
+  "what a shame",
+  "that’s one approach",
+  "interesting choice",
+  "not ideal for you",
+  "thank you for your time",
+  "i’ll allow myself a moment",
+  "difficult news for the community",
+  "congratulations on that",
+  "now why would you do that",
+  "this has been reviewed",
+  "brave, unfortunately",
+  "understood. against my wishes",
+  "i reject the premise",
+  "i need a second",
+  "you really went with that",
+  "not my favorite development",
+  "certainly a tone",
+  "this changed nothing",
+  "noted with concern",
+  "i see what happened here",
+  "that’s enough of that",
+  "i appreciate the warning",
+  "sadly, i noticed",
+  "there it is",
+  "unfortunate",
+  "that will not be helping",
+  "not strong work",
+  "i see the issue",
+  "this complicates things",
+  "you’ve created a situation",
+  "not ideal behavior",
+  "this is being processed",
+  "well that’s disappointing",
+  "i expected more",
+  "that’s a difficult look",
+  "i don’t love this development",
+  "a bold miscalculation",
+  "that could have stayed private",
+  "this will require distance",
+  "not a compelling result"
+];
+
+const rareLines = [
+  "you’re confusing confidence with momentum",
+  "this is bigger than a bad take",
+  "i’ll be thinking about this against my will",
+  "i support your freedom to be wrong",
+  "this did alter my perception",
+  "i don’t think you understand what you’ve done",
+  "the consequences are mostly aesthetic",
+  "this is worse than your tone suggests"
+];
+
+const persistenceLines = [
+  "still?",
+  "continuing?",
+  "you’re persisting",
+  "not finished?",
+  "we’re still doing this?",
+  "you do seem committed",
+  "this is becoming a pattern"
+];
+
+const returnLines = [
+  "back again",
+  "not resolved?",
+  "you returned",
+  "still on this?",
+  "welcome back, unfortunately"
+];
+
+const text = document.getElementById("text");
+
+let clicks = 0;
+let visits = Number(localStorage.getItem("shameVisits") || 0) + 1;
+localStorage.setItem("shameVisits", visits);
+
+if(visits > 1){
+  text.textContent = returnLines[Math.floor(Math.random() * returnLines.length)];
+}
+
+document.body.addEventListener("click", () => {
+  clicks++;
+
+  if(Math.floor(Math.random() * 40) === 0){
+    text.textContent = rareLines[Math.floor(Math.random() * rareLines.length)];
+    return;
+  }
+
+  if(clicks > 6 && Math.random() < 0.3){
+    text.textContent = persistenceLines[Math.floor(Math.random() * persistenceLines.length)];
+    return;
+  }
+
+  text.textContent = baseLines[Math.floor(Math.random() * baseLines.length)];
+});
+</script>
+
+</body>
+</html>
